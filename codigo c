@@ -9,7 +9,7 @@
 //     IMPRIMIR i
 // FIN PARA
 
-void ejercicio1() {
+int main() {
     printf("=== EJERCICIO 1: Números del 1 al 10 ===\n");
     
     // Bucle for: inicialización (i=1), condición (i<=10), incremento (i++)
@@ -31,7 +31,7 @@ void ejercicio1() {
 //     numero ← numero + 2
 // FIN MIENTRAS
 
-void ejercicio2() {
+int main() {
     printf("=== EJERCICIO 2: Números pares del 2 al 20 ===\n");
     
     // Inicializa el primer número par
@@ -58,7 +58,7 @@ void ejercicio2() {
 // FIN PARA
 // IMPRIMIR suma
 
-void ejercicio3() {
+int main() {
     printf("=== EJERCICIO 3: Suma de primeros 10 números naturales ===\n");
     
     // Variable acumuladora inicializada en 0
@@ -88,7 +88,7 @@ void ejercicio3() {
 //     FIN SI
 // MIENTRAS numero != 0
 
-void ejercicio4() {
+int main() {
     printf("=== EJERCICIO 4: Pedir números hasta ingresar 0 ===\n");
     
     int numero;
@@ -120,7 +120,7 @@ void ejercicio4() {
 // FIN PARA
 // IMPRIMIR factorial
 
-void ejercicio5() {
+int main() {
     printf("=== EJERCICIO 5: Calcular factorial de un número ===\n");
     
     int numero;
@@ -161,7 +161,7 @@ void ejercicio5() {
 //     FIN SI
 // MIENTRAS numero >= 0
 
-void ejercicio6() {
+int main() {
     printf("=== EJERCICIO 6: Contar números positivos ===\n");
     
     int numero;
@@ -203,7 +203,7 @@ void ejercicio6() {
 //     IMPRIMIR numero + " x " + i + " = " + resultado
 // FIN PARA
 
-void ejercicio7() {
+int main() {
     printf("=== EJERCICIO 7: Tabla de multiplicar ===\n");
     
     int numero;
@@ -238,7 +238,7 @@ void ejercicio7() {
 //     FIN SI
 // MIENTRAS numero >= 0
 
-void ejercicio8() {
+int main() {
     printf("=== EJERCICIO 8: Sumar números hasta ingresar negativo ===\n");
     
     int numero;
@@ -272,7 +272,7 @@ void ejercicio8() {
 //     IMPRIMIR i
 // FIN PARA
 
-void ejercicio9() {
+int main() {
     printf("=== EJERCICIO 9: Números del 10 al 1 (descendente) ===\n");
     
     // Bucle for descendente: inicia en 10, continúa mientras i>=1, decrementa
@@ -302,7 +302,7 @@ void ejercicio9() {
 //     FIN MIENTRAS
 // FIN SI
 
-void ejercicio10() {
+int main() {
     printf("=== EJERCICIO 10: Verificar si un número es primo ===\n");
     
     int numero;
