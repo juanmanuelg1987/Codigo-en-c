@@ -1,436 +1,412 @@
+# GUÍA COMPLETA DE BUCLES EN LENGUAJE C
+
+## 📚 INTRODUCCIÓN A LOS BUCLES
+
+Los bucles (también llamados ciclos o iteraciones) son estructuras de control que permiten ejecutar un bloque de código repetidamente mientras se cumpla una condición específica. Son fundamentales en programación para automatizar tareas repetitivas.
+
+---
+
+## 🔄 1. BUCLE FOR
+
+### **¿Qué es?**
+El bucle `for` es una estructura de control que ejecuta un bloque de código un número determinado de veces. Es ideal cuando conocemos exactamente cuántas iteraciones necesitamos.
+
+### **Sintaxis:**
+```c
+for (inicialización; condición; incremento/decremento) {
+    // Código a ejecutar
+}
+```
+
+### **Traducción al español:**
+- **FOR** = "PARA" o "POR"
+- Se lee como: "PARA i desde 1 hasta 10, hacer..."
+
+### **Cómo funciona:**
+1. **Inicialización**: Se ejecuta una sola vez al inicio
+2. **Condición**: Se evalúa antes de cada iteración
+3. **Código**: Se ejecuta si la condición es verdadera
+4. **Incremento/Decremento**: Se ejecuta después de cada iteración
+5. **Repetir desde paso 2** hasta que la condición sea falsa
+
+### **Ejemplo básico:**
+```c
+// Imprimir números del 1 al 5
+for (int i = 1; i <= 5; i++) {
+    printf("%d ", i);
+}
+// Salida: 1 2 3 4 5
+```
+
+### **Cuándo usarlo:**
+- ✅ Cuando conoces el número exacto de iteraciones
+- ✅ Para recorrer arrays o estructuras de datos
+- ✅ Para contadores o secuencias numéricas
+- ✅ Cuando necesitas una variable de control específica
+
+### **Ventajas:**
+- Código más compacto y legible
+- Variable de control en un solo lugar
+- Ideal para iteraciones conocidas
+
+---
+
+## 🔄 2. BUCLE FOR DESCENDENTE
+
+### **¿Qué es?**
+Es una variación del bucle `for` que cuenta hacia atrás, decrementando la variable de control en lugar de incrementarla.
+
+### **Sintaxis:**
+```c
+for (inicialización_mayor; condición_menor; decremento) {
+    // Código a ejecutar
+}
+```
+
+### **Ejemplo:**
+```c
+// Imprimir números del 10 al 1
+for (int i = 10; i >= 1; i--) {
+    printf("%d ", i);
+}
+// Salida: 10 9 8 7 6 5 4 3 2 1
+```
+
+### **Cómo funciona:**
+1. **Inicialización**: `i = 10` (valor más alto)
+2. **Condición**: `i >= 1` (mientras sea mayor o igual a 1)
+3. **Decremento**: `i--` (reduce en 1 cada iteración)
+
+### **Cuándo usarlo:**
+- ✅ Para cuentas regresivas
+- ✅ Para recorrer arrays desde el final al inicio
+- ✅ Para procesar datos en orden inverso
+- ✅ Para simulaciones que requieren secuencias descendentes
+
+### **Casos prácticos:**
+- Cuentas regresivas (10, 9, 8...)
+- Ordenamiento burbuja (desde el final)
+- Procesamiento de pilas (LIFO - Last In, First Out)
+
+---
+
+## 🔄 3. BUCLE WHILE
+
+### **¿Qué es?**
+El bucle `while` ejecuta un bloque de código mientras una condición sea verdadera. La condición se evalúa ANTES de cada iteración.
+
+### **Sintaxis:**
+```c
+while (condición) {
+    // Código a ejecutar
+    // IMPORTANTE: debe modificar la condición
+}
+```
+
+### **Traducción al español:**
+- **WHILE** = "MIENTRAS QUE"
+- Se lee como: "MIENTRAS QUE la condición sea verdadera, hacer..."
+
+### **Cómo funciona:**
+1. **Evaluar condición**: Se verifica si es verdadera
+2. **Si es verdadera**: Ejecuta el código del bucle
+3. **Si es falsa**: Sale del bucle
+4. **Repetir desde paso 1**
+
+### **Ejemplo básico:**
+```c
+int contador = 1;
+while (contador <= 5) {
+    printf("%d ", contador);
+    contador++;  // CRÍTICO: modificar la condición
+}
+// Salida: 1 2 3 4 5
+```
+
+### **Cuándo usarlo:**
+- ✅ Cuando no sabes cuántas iteraciones necesitas
+- ✅ Para validación de entrada de usuario
+- ✅ Para procesar datos hasta cumplir una condición
+- ✅ Para búsquedas o algoritmos con condiciones dinámicas
+
+### **Casos prácticos:**
+```c
+// Leer números hasta encontrar uno negativo
+int numero;
+printf("Ingrese números (negativo para salir): ");
+scanf("%d", &numero);
+while (numero >= 0) {
+    printf("Número válido: %d\n", numero);
+    scanf("%d", &numero);
+}
+```
+
+### **⚠️ CUIDADO:**
+```c
+// BUCLE INFINITO - EVITAR
+int i = 1;
+while (i <= 10) {
+    printf("%d ", i);
+    // ERROR: Falta i++ - bucle infinito
+}
+```
+
+---
+
+## 🔄 4. BUCLE DO-WHILE
+
+### **¿Qué es?**
+El bucle `do-while` ejecuta un bloque de código al menos una vez, y luego continúa mientras la condición sea verdadera. La condición se evalúa DESPUÉS de cada iteración.
+
+### **Sintaxis:**
+```c
+do {
+    // Código a ejecutar
+    // Se ejecuta AL MENOS UNA VEZ
+} while (condición);
+```
+
+### **Traducción al español:**
+- **DO-WHILE** = "HACER-MIENTRAS QUE"
+- Se lee como: "HACER esto, MIENTRAS QUE la condición sea verdadera"
+
+### **Cómo funciona:**
+1. **Ejecutar código**: Se ejecuta al menos una vez
+2. **Evaluar condición**: Se verifica después de ejecutar
+3. **Si es verdadera**: Vuelve al paso 1
+4. **Si es falsa**: Sale del bucle
+
+### **Ejemplo básico:**
+```c
+int numero;
+do {
+    printf("Ingrese un número entre 1 y 10: ");
+    scanf("%d", &numero);
+    if (numero < 1 || numero > 10) {
+        printf("Error: número fuera de rango\n");
+    }
+} while (numero < 1 || numero > 10);
+printf("Número válido: %d\n", numero);
+```
+
+### **Diferencia clave con WHILE:**
+```c
+// WHILE - Puede no ejecutarse nunca
+int x = 10;
+while (x < 5) {
+    printf("Esto NO se imprime\n");
+}
+
+// DO-WHILE - Se ejecuta al menos una vez
+int y = 10;
+do {
+    printf("Esto SÍ se imprime\n");
+} while (y < 5);
+```
+
+### **Cuándo usarlo:**
+- ✅ Para menús interactivos
+- ✅ Validación de entrada de usuario
+- ✅ Cuando necesitas ejecutar algo al menos una vez
+- ✅ Para confirmar acciones ("¿Desea continuar?")
+
+### **Casos prácticos:**
+```c
+// Menú que se muestra al menos una vez
+char opcion;
+do {
+    printf("\n=== MENÚ ===\n");
+    printf("a) Opción A\n");
+    printf("b) Opción B\n");
+    printf("s) Salir\n");
+    printf("Elija una opción: ");
+    scanf(" %c", &opcion);
+    
+    switch(opcion) {
+        case 'a': printf("Ejecutando A\n"); break;
+        case 'b': printf("Ejecutando B\n"); break;
+        case 's': printf("Saliendo...\n"); break;
+        default: printf("Opción inválida\n");
+    }
+} while (opcion != 's');
+```
+
+---
+
+## 📊 COMPARACIÓN DE BUCLES
+
+| Característica | FOR | WHILE | DO-WHILE |
+|----------------|-----|-------|----------|
+| **Cuándo evalúa condición** | Antes | Antes | Después |
+| **Ejecuciones mínimas** | 0 | 0 | 1 |
+| **Mejor para** | Iteraciones conocidas | Condiciones dinámicas | Validaciones |
+| **Variable de control** | Integrada | Manual | Manual |
+| **Legibilidad** | Alta (compacto) | Media | Media |
+
+---
+
+## 🎯 GUÍA DE DECISIÓN: ¿CUÁL USAR?
+
+### **Usa FOR cuando:**
+- Necesites un contador específico
+- Sepas exactamente cuántas veces iterar
+- Recorras arrays o estructuras de datos
+- Quieras código más compacto
+
+### **Usa WHILE cuando:**
+- No sepas cuántas iteraciones necesitas
+- La condición dependa de datos externos
+- Proceses entrada de usuario indefinida
+- Implementes algoritmos de búsqueda
+
+### **Usa DO-WHILE cuando:**
+- Necesites ejecutar código al menos una vez
+- Valides entrada de usuario
+- Crees menús interactivos
+- Confirmes acciones del usuario
+
+---
+
+## 💡 EJEMPLOS PRÁCTICOS COMPLETOS
+
+### **Ejemplo 1: Cálculo de promedio con WHILE**
+```c
 #include <stdio.h>
 
-// ============================================================================
-// EJERCICIO 1: Mostrar los números del 1 al 10 usando for
-// ============================================================================
-// EXPLICACIÓN: Este programa utiliza un bucle for para imprimir números consecutivos
-// PSEUDOCÓDIGO:
-// PARA i DESDE 1 HASTA 10 HACER
-//     IMPRIMIR i
-// FIN PARA
-
-void ejercicio1() {
-    printf("=== EJERCICIO 1: Números del 1 al 10 ===\n");
-    
-    // Bucle for: inicialización (i=1), condición (i<=10), incremento (i++)
-    for (int i = 1; i <= 10; i++) {
-        // Imprime el valor actual de i
-        printf("%d ", i);
-    }
-    printf("\n\n");
-}
-
-// ============================================================================
-// EJERCICIO 2: Mostrar los números pares del 2 al 20 usando while
-// ============================================================================
-// EXPLICACIÓN: Utiliza while para mostrar solo números pares incrementando de 2 en 2
-// PSEUDOCÓDIGO:
-// numero ← 2
-// MIENTRAS numero <= 20 HACER
-//     IMPRIMIR numero
-//     numero ← numero + 2
-// FIN MIENTRAS
-
-void ejercicio2() {
-    printf("=== EJERCICIO 2: Números pares del 2 al 20 ===\n");
-    
-    // Inicializa el primer número par
-    int numero = 2;
-    
-    // Bucle while que continúa mientras numero <= 20
-    while (numero <= 20) {
-        // Imprime el número par actual
-        printf("%d ", numero);
-        // Incrementa en 2 para obtener el siguiente par
-        numero += 2;
-    }
-    printf("\n\n");
-}
-
-// ============================================================================
-// EJERCICIO 3: Sumar los primeros 10 números naturales (for)
-// ============================================================================
-// EXPLICACIÓN: Suma los números del 1 al 10 y muestra el resultado
-// PSEUDOCÓDIGO:
-// suma ← 0
-// PARA i DESDE 1 HASTA 10 HACER
-//     suma ← suma + i
-// FIN PARA
-// IMPRIMIR suma
-
-void ejercicio3() {
-    printf("=== EJERCICIO 3: Suma de primeros 10 números naturales ===\n");
-    
-    // Variable acumuladora inicializada en 0
-    int suma = 0;
-    
-    // Bucle for para sumar números del 1 al 10
-    for (int i = 1; i <= 10; i++) {
-        // Acumula cada número en la suma total
-        suma += i;
-        // Muestra el proceso de suma paso a paso
-        printf("Sumando %d: total = %d\n", i, suma);
-    }
-    
-    // Muestra el resultado final
-    printf("Suma total: %d\n\n", suma);
-}
-
-// ============================================================================
-// EJERCICIO 4: Pedir números hasta ingresar 0 (usar do while)
-// ============================================================================
-// EXPLICACIÓN: Solicita números al usuario y los muestra hasta que ingrese 0
-// PSEUDOCÓDIGO:
-// HACER
-//     LEER numero
-//     SI numero != 0 ENTONCES
-//         IMPRIMIR numero
-//     FIN SI
-// MIENTRAS numero != 0
-
-void ejercicio4() {
-    printf("=== EJERCICIO 4: Pedir números hasta ingresar 0 ===\n");
-    
-    int numero;
-    
-    // Bucle do-while: ejecuta al menos una vez, luego verifica condición
-    do {
-        // Solicita número al usuario
-        printf("Ingrese un número (0 para salir): ");
-        scanf("%d", &numero);
-        
-        // Si no es 0, muestra el número ingresado
-        if (numero != 0) {
-            printf("Número ingresado: %d\n", numero);
-        }
-    } while (numero != 0); // Continúa mientras no sea 0
-    
-    printf("¡Programa terminado!\n\n");
-}
-
-// ============================================================================
-// EJERCICIO 5: Calcular el factorial de un número (for)
-// ============================================================================
-// EXPLICACIÓN: Calcula el factorial de un número ingresado por el usuario
-// PSEUDOCÓDIGO:
-// LEER numero
-// factorial ← 1
-// PARA i DESDE 1 HASTA numero HACER
-//     factorial ← factorial * i
-// FIN PARA
-// IMPRIMIR factorial
-
-void ejercicio5() {
-    printf("=== EJERCICIO 5: Calcular factorial de un número ===\n");
-    
-    int numero;
-    // Variable para almacenar el resultado, inicializada en 1
-    long long factorial = 1;
-    
-    // Solicita el número al usuario
-    printf("Ingrese un número para calcular su factorial: ");
-    scanf("%d", &numero);
-    
-    // Validación para números negativos
-    if (numero < 0) {
-        printf("Error: No se puede calcular factorial de números negativos\n\n");
-        return;
-    }
-    
-    // Bucle for para calcular factorial
-    for (int i = 1; i <= numero; i++) {
-        // Multiplica factorial por cada número desde 1 hasta numero
-        factorial *= i;
-        printf("%d! parcial = %lld\n", i, factorial);
-    }
-    
-    // Muestra el resultado final
-    printf("El factorial de %d es: %lld\n\n", numero, factorial);
-}
-
-// ============================================================================
-// EJERCICIO 6: Contar cuántos números positivos se ingresan (while)
-// ============================================================================
-// EXPLICACIÓN: Cuenta números positivos hasta que se ingrese un número negativo
-// PSEUDOCÓDIGO:
-// contador ← 0
-// HACER
-//     LEER numero
-//     SI numero > 0 ENTONCES
-//         contador ← contador + 1
-//     FIN SI
-// MIENTRAS numero >= 0
-
-void ejercicio6() {
-    printf("=== EJERCICIO 6: Contar números positivos ===\n");
-    
-    int numero;
-    // Contador de números positivos
-    int contador = 0;
-    
-    printf("Ingrese números (número negativo para terminar):\n");
-    
-    // Bucle while que continúa mientras el número sea >= 0
-    while (1) {
-        printf("Número: ");
-        scanf("%d", &numero);
-        
-        // Si es negativo, sale del bucle
-        if (numero < 0) {
-            break;
-        }
-        
-        // Si es positivo, incrementa contador
-        if (numero > 0) {
-            contador++;
-            printf("Números positivos ingresados hasta ahora: %d\n", contador);
-        }
-        // Si es 0, no cuenta pero continúa
-    }
-    
-    // Muestra el resultado final
-    printf("Total de números positivos ingresados: %d\n\n", contador);
-}
-
-// ============================================================================
-// EJERCICIO 7: Mostrar tabla de multiplicar (usar for)
-// ============================================================================
-// EXPLICACIÓN: Muestra la tabla de multiplicar de un número ingresado
-// PSEUDOCÓDIGO:
-// LEER numero
-// PARA i DESDE 1 HASTA 10 HACER
-//     resultado ← numero * i
-//     IMPRIMIR numero + " x " + i + " = " + resultado
-// FIN PARA
-
-void ejercicio7() {
-    printf("=== EJERCICIO 7: Tabla de multiplicar ===\n");
-    
-    int numero;
-    
-    // Solicita el número para la tabla
-    printf("Ingrese un número para ver su tabla de multiplicar: ");
-    scanf("%d", &numero);
-    
-    printf("\nTabla de multiplicar del %d:\n", numero);
-    printf("------------------------\n");
-    
-    // Bucle for para generar tabla del 1 al 10
-    for (int i = 1; i <= 10; i++) {
-        // Calcula el resultado de la multiplicación
-        int resultado = numero * i;
-        // Muestra la operación completa
-        printf("%d x %d = %d\n", numero, i, resultado);
-    }
-    printf("\n");
-}
-
-// ============================================================================
-// EJERCICIO 8: Sumar una serie de números hasta ingresar negativo (do while)
-// ============================================================================
-// EXPLICACIÓN: Suma números hasta que se ingrese un número negativo
-// PSEUDOCÓDIGO:
-// suma ← 0
-// HACER
-//     LEER numero
-//     SI numero >= 0 ENTONCES
-//         suma ← suma + numero
-//     FIN SI
-// MIENTRAS numero >= 0
-
-void ejercicio8() {
-    printf("=== EJERCICIO 8: Sumar números hasta ingresar negativo ===\n");
-    
-    int numero;
-    // Acumulador para la suma
-    int suma = 0;
-    
-    printf("Ingrese números para sumar (número negativo para terminar):\n");
-    
-    // Bucle do-while: ejecuta al menos una vez
-    do {
-        printf("Número: ");
-        scanf("%d", &numero);
-        
-        // Si el número es positivo o cero, lo suma
-        if (numero >= 0) {
-            suma += numero;
-            printf("Suma parcial: %d\n", suma);
-        }
-    } while (numero >= 0); // Continúa mientras no sea negativo
-    
-    // Muestra el resultado final
-    printf("Suma total: %d\n\n", suma);
-}
-
-// ============================================================================
-// EJERCICIO 9: Mostrar números del 10 al 1 (for descendente)
-// ============================================================================
-// EXPLICACIÓN: Utiliza for con decremento para mostrar números en orden descendente
-// PSEUDOCÓDIGO:
-// PARA i DESDE 10 HASTA 1 DECREMENTANDO HACER
-//     IMPRIMIR i
-// FIN PARA
-
-void ejercicio9() {
-    printf("=== EJERCICIO 9: Números del 10 al 1 (descendente) ===\n");
-    
-    // Bucle for descendente: inicia en 10, continúa mientras i>=1, decrementa
-    for (int i = 10; i >= 1; i--) {
-        // Imprime el valor actual
-        printf("%d ", i);
-    }
-    printf("\n\n");
-}
-
-// ============================================================================
-// EJERCICIO 10: Verificar si un número es primo (while)
-// ============================================================================
-// EXPLICACIÓN: Verifica si un número es primo probando divisores hasta su raíz cuadrada
-// PSEUDOCÓDIGO:
-// LEER numero
-// SI numero <= 1 ENTONCES
-//     NO ES PRIMO
-// SINO
-//     divisor ← 2
-//     esPrimo ← VERDADERO
-//     MIENTRAS divisor * divisor <= numero Y esPrimo HACER
-//         SI numero MOD divisor = 0 ENTONCES
-//             esPrimo ← FALSO
-//         FIN SI
-//         divisor ← divisor + 1
-//     FIN MIENTRAS
-// FIN SI
-
-void ejercicio10() {
-    printf("=== EJERCICIO 10: Verificar si un número es primo ===\n");
-    
-    int numero;
-    // Variable bandera para determinar si es primo
-    int esPrimo = 1; // 1 = verdadero, 0 = falso
-    
-    // Solicita el número al usuario
-    printf("Ingrese un número para verificar si es primo: ");
-    scanf("%d", &numero);
-    
-    // Casos especiales: números <= 1 no son primos
-    if (numero <= 1) {
-        esPrimo = 0;
-    } else if (numero == 2) {
-        // 2 es el único número par primo
-        esPrimo = 1;
-    } else {
-        // Verifica divisores desde 2 hasta la raíz cuadrada del número
-        int divisor = 2;
-        
-        // Bucle while para buscar divisores
-        while (divisor * divisor <= numero && esPrimo) {
-            // Si encuentra un divisor, no es primo
-            if (numero % divisor == 0) {
-                esPrimo = 0;
-                printf("Divisor encontrado: %d\n", divisor);
-            }
-            // Incrementa el divisor para probar el siguiente
-            divisor++;
-        }
-    }
-    
-    // Muestra el resultado
-    if (esPrimo) {
-        printf("El número %d ES PRIMO\n\n", numero);
-    } else {
-        printf("El número %d NO ES PRIMO\n\n", numero);
-    }
-}
-
-// ============================================================================
-// FUNCIÓN PRINCIPAL - MENÚ DE EJERCICIOS
-// ============================================================================
-// EXPLICACIÓN: Presenta un menú para que el usuario elija qué ejercicio ejecutar
-// PSEUDOCÓDIGO:
-// REPETIR
-//     MOSTRAR MENÚ
-//     LEER opcion
-//     SEGÚN opcion HACER
-//         CASO 1: ejercicio1()
-//         CASO 2: ejercicio2()
-//         ...
-//         CASO 0: SALIR
-//     FIN SEGÚN
-// HASTA QUE opcion = 0
-
 int main() {
-    int opcion;
+    int numero, suma = 0, contador = 0;
+    float promedio;
     
-    do {
-        // Muestra el menú de opciones
-        printf("\n========================================\n");
-        printf("         MENÚ DE EJERCICIOS CON BUCLES\n");
-        printf("========================================\n");
-        printf("1.  Números del 1 al 10 (for)\n");
-        printf("2.  Números pares del 2 al 20 (while)\n");
-        printf("3.  Suma primeros 10 números (for)\n");
-        printf("4.  Pedir números hasta 0 (do-while)\n");
-        printf("5.  Calcular factorial (for)\n");
-        printf("6.  Contar positivos (while)\n");
-        printf("7.  Tabla de multiplicar (for)\n");
-        printf("8.  Sumar hasta negativo (do-while)\n");
-        printf("9.  Números 10 al 1 descendente (for)\n");
-        printf("10. Verificar número primo (while)\n");
-        printf("0.  SALIR\n");
-        printf("========================================\n");
-        printf("Seleccione una opción: ");
-        
-        // Lee la opción del usuario
-        scanf("%d", &opcion);
-        
-        // Switch para ejecutar el ejercicio seleccionado
-        switch (opcion) {
-            case 1:
-                ejercicio1();
-                break;
-            case 2:
-                ejercicio2();
-                break;
-            case 3:
-                ejercicio3();
-                break;
-            case 4:
-                ejercicio4();
-                break;
-            case 5:
-                ejercicio5();
-                break;
-            case 6:
-                ejercicio6();
-                break;
-            case 7:
-                ejercicio7();
-                break;
-            case 8:
-                ejercicio8();
-                break;
-            case 9:
-                ejercicio9();
-                break;
-            case 10:
-                ejercicio10();
-                break;
-            case 0:
-                printf("¡Gracias por usar el programa!\n");
-                break;
-            default:
-                printf("Opción inválida. Intente nuevamente.\n");
-        }
-        
-        // Pausa para que el usuario pueda ver los resultados
-        if (opcion != 0) {
-            printf("Presione Enter para continuar...");
-            getchar(); // Consume el \n del scanf anterior
-            getchar(); // Espera que el usuario presione Enter
-        }
-        
-    } while (opcion != 0); // Continúa hasta que el usuario elija salir
+    printf("Ingrese números (0 para terminar):\n");
+    scanf("%d", &numero);
+    
+    while (numero != 0) {
+        suma += numero;
+        contador++;
+        scanf("%d", &numero);
+    }
+    
+    if (contador > 0) {
+        promedio = (float)suma / contador;
+        printf("Promedio: %.2f\n", promedio);
+    } else {
+        printf("No se ingresaron números\n");
+    }
     
     return 0;
 }
+```
+
+### **Ejemplo 2: Validación con DO-WHILE**
+```c
+#include <stdio.h>
+
+int main() {
+    int edad;
+    
+    do {
+        printf("Ingrese su edad (18-100): ");
+        scanf("%d", &edad);
+        
+        if (edad < 18 || edad > 100) {
+            printf("Error: Edad debe estar entre 18 y 100 años\n");
+        }
+    } while (edad < 18 || edad > 100);
+    
+    printf("Edad válida: %d años\n", edad);
+    
+    return 0;
+}
+```
+
+### **Ejemplo 3: Tabla de multiplicar con FOR**
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    
+    printf("Ingrese un número: ");
+    scanf("%d", &numero);
+    
+    printf("\nTabla de multiplicar del %d:\n", numero);
+    for (int i = 1; i <= 12; i++) {
+        printf("%d x %d = %d\n", numero, i, numero * i);
+    }
+    
+    return 0;
+}
+```
+
+---
+
+## ⚠️ ERRORES COMUNES Y CÓMO EVITARLOS
+
+### **1. Bucle Infinito**
+```c
+// INCORRECTO
+int i = 1;
+while (i <= 10) {
+    printf("%d ", i);
+    // Falta i++ - bucle infinito
+}
+
+// CORRECTO
+int i = 1;
+while (i <= 10) {
+    printf("%d ", i);
+    i++; // Modificar la variable de control
+}
+```
+
+### **2. Condición mal planteada**
+```c
+// INCORRECTO
+for (int i = 1; i < 10; i--) {
+    // Nunca termina: i comienza en 1 y decrece
+}
+
+// CORRECTO
+for (int i = 10; i > 0; i--) {
+    // Comienza en 10 y decrece hasta 1
+}
+```
+
+### **3. Punto y coma en FOR**
+```c
+// INCORRECTO
+for (int i = 1; i <= 10; i++); {
+    printf("%d ", i); // Solo se ejecuta una vez
+}
+
+// CORRECTO
+for (int i = 1; i <= 10; i++) {
+    printf("%d ", i); // Se ejecuta 10 veces
+}
+```
+
+---
+
+## 🏆 CONSEJOS PROFESIONALES
+
+1. **Siempre inicializa variables de control**
+2. **Verifica que la condición pueda volverse falsa**
+3. **Usa nombres descriptivos para variables de control**
+4. **Comenta bucles complejos**
+5. **Evita modificar la variable de control dentro del FOR**
+6. **Prefiere FOR para iteraciones conocidas**
+7. **Usa WHILE para condiciones dinámicas**
+8. **Usa DO-WHILE para garantizar al menos una ejecución**
+
+---
+
+## 📝 RESUMEN EJECUTIVO
+
+Los bucles son herramientas poderosas que automatizan tareas repetitivas:
+
+- **FOR**: Perfecto para iteraciones conocidas y contadores
+- **WHILE**: Ideal para condiciones dinámicas y validaciones
+- **DO-WHILE**: Garantiza al menos una ejecución, excelente para menús
+- **FOR Descendente**: Especializado en cuentas regresivas y recorridos inversos
+
+La elección del bucle correcto hace que tu código sea más legible, eficiente y mantenible. ¡Practica con diferentes escenarios para dominar cada tipo!
